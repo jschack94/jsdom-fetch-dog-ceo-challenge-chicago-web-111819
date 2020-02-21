@@ -55,3 +55,23 @@ alphabet
 ---
 
 ![dog ceo](https://dog.ceo/img/dog.jpg)
+
+
+
+const dogContainer = document.getElementById("dog-image-container")
+
+function loadImages() {
+  fetch('https://dog.ceo/api/breeds/image/random/4') 
+    .then( response => response.json() )
+    .then( dogImageData => renderDog(dogImageData.message) )
+}
+
+function renderDog(dogImageData) {
+  dogImageData.forEach ( dog => {
+    const img = document.createElement('img')
+    img.src = dog
+    dogContainer.appendChild(img);
+  })
+}
+
+loadImages()
